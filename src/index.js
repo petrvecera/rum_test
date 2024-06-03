@@ -8,11 +8,11 @@ import reportWebVitals from './reportWebVitals';
 
 
 
-// import { Metrics } from "@edgio/rum";
+import { Metrics } from "@edgio/rum";
 
-// new Metrics({
-//   token: "24305d45-e1ed-417b-8e11-29f8920f3fac",
-// }).collect();
+new Metrics({
+  token: "24305d45-e1ed-417b-8e11-29f8920f3fac",
+}).collect();
 
 
 

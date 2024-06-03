@@ -7,7 +7,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+      # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+
     steps:
         - uses: actions/checkout@v4
         - name: Setup Node.js environment
@@ -17,5 +21,13 @@ jobs:
         - name: Install dependencies
           run: npm i
         - name: Deploy
-          run: npm run deploy
+          run: npm run build
+        - name: Upload artifact
+          uses: actions/upload-pages-artifact@v4
+          with:
+            # Upload entire repository
+            path: 'build'
+        - name: Deploy to GitHub Pages
+          id: deployment
+          uses: actions/deploy-pages@v4
     
